@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CIFAR-10 Image Classifier</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🖼️ CIFAR-10 Image Classifier</h1>
+            <p class="subtitle">Upload an image to classify it into one of 10 categories</p>
+        </header>
+
+        <div class="main-content">
+            <!-- Upload Section -->
+            <div class="upload-section">
+                <div class="upload-area" id="uploadArea">
+                    <div class="upload-icon">📁</div>
+                    <h3>Drag & Drop Image Here</h3>
+                    <p>or click to browse</p>
+                    <input type="file" id="fileInput" accept="image/*" hidden>
+                </div>
+                
+                <div class="image-preview" id="imagePreview" style="display: none;">
+                    <img id="previewImg" src="" alt="Preview">
+                    <button class="btn-secondary" id="clearBtn">Clear</button>
+                </div>
+            </div>
+
+            <!-- Results Section -->
+            <div class="results-section" id="resultsSection" style="display: none;">
+                <h2>Prediction Results</h2>
+                
+                <div class="top-prediction">
+                    <div class="prediction-label">
+                        <span class="label-text" id="topClass">-</span>
+                        <span class="confidence-badge" id="topConfidence">0%</span>
+                    </div>
+                </div>
+
+                <div class="all-predictions">
+                    <h3>All Class Probabilities</h3>
+                    <div id="predictionBars"></div>
+                </div>
+            </div>
+
+            <!-- Loading Spinner -->
+            <div class="loading" id="loading" style="display: none;">
+                <div class="spinner"></div>
+                <p>Analyzing image...</p>
+            </div>
+
+            <!-- Error Message -->
+            <div class="error-message" id="errorMessage" style="display: none;">
+                <span id="errorText"></span>
+            </div>
+        </div>
+
+        <!-- Info Section -->
+        <div class="info-section">
+            <h3>📋 Supported Classes</h3>
+            <div class="class-grid">
+                <span class="class-tag">✈️ Plane</span>
+                <span class="class-tag">🚗 Car</span>
+                <span class="class-tag">🐦 Bird</span>
+                <span class="class-tag">🐱 Cat</span>
+                <span class="class-tag">🦌 Deer</span>
+                <span class="class-tag">🐕 Dog</span>
+                <span class="class-tag">🐸 Frog</span>
+                <span class="class-tag">🐴 Horse</span>
+                <span class="class-tag">🚢 Ship</span>
+                <span class="class-tag">🚚 Truck</span>
+            </div>
+        </div>
+
+        <footer>
+            <p>Powered by PyTorch CNN | Accuracy: 74.64%</p>
+        </footer>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+</html>
